@@ -15,14 +15,9 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  componentDidMount() {
-    BooksAPI.getAll()
-      .then(books => {
-        console.log(books)
-        this.setState(() => ({
-          books: books
-        }))
-      })
+  async componentDidMount() {
+    const books = await BooksAPI.getAll();
+    this.setState({books});
   }
 
   handleChange = (book, shelf) => {
@@ -34,7 +29,6 @@ class BooksApp extends React.Component {
             return _book.id !== book.id
           }).concat([book])
         }))
-        console.log(this.state.books)
       })
   }
 

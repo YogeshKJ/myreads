@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default function Books({ shelf, book, title, author, image, handleChange }) {
+export default function Books({ shelf, book, title, authors, image, handleChange }) {
     return (
         <li>
             <div className="book">
@@ -17,8 +18,17 @@ export default function Books({ shelf, book, title, author, image, handleChange 
                     </div>
                 </div>
                 <div className="book-title">{title}</div>
-                <div className="book-authors">{author}</div>
+                <div className="book-authors">{authors}</div>
             </div>
         </li>
     )
+}
+
+Books.propTypes = {
+    shelf: PropTypes.string.isRequired,
+    book: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.array.isRequired,
+    image: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
 }

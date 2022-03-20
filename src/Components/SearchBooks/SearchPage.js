@@ -1,23 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 import { search } from '../../BooksAPI'
 
 import SearchResult from './SearchResult';
 
 class SearchPage extends React.Component {
+    static propTypes = {
+        books: PropTypes.array.isRequired,
+        handleChange: PropTypes.func.isRequired,
+    }
+
     state = {
         searchList: []
     }
 
     handleInput = (event) => {
-        console.log(event.target.value);
         event.target.value === null ? (
             this.setState({ searchList: [] })
         ) : (
             search(event.target.value)
                 .then(searchList => {
-                    console.log(searchList)
                     this.setState(() => ({
                         searchList
                     }))

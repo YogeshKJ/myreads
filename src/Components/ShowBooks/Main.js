@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Shelf from './Shelf';
 
@@ -9,4 +10,9 @@ export default function Main({books, handleChange}) {
                 <Shelf shelf='read' books={books} handleChange={handleChange} />
             </div>
         )
+}
+
+Main.propTypes = {
+    books: PropTypes.array.isRequired,
+    handleChange: PropTypes.func.isRequired
 }

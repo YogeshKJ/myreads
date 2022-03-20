@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Books from '../ShowBooks/Books'
 
@@ -12,7 +13,7 @@ export default function SearchResult({ shelfBooks, books, handleChange }) {
                         book={book}
                         key={book.id}
                         title={book.title}
-                        author={book.author}
+                        authors={book.authors}
                         image={book.imageLinks ? book.imageLinks.thumbnail : ''}
                         shelf={result ? result.shelf : 'none'}
                         handleChange={handleChange}
@@ -21,4 +22,10 @@ export default function SearchResult({ shelfBooks, books, handleChange }) {
             })}
         </ol>
     )
+}
+
+SearchResult.propTypes = {
+    shelfBooks: PropTypes.array.isRequired,
+    books: PropTypes.array.isRequired,
+    handleChange: PropTypes.func.isRequired,
 }
